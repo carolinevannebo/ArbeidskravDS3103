@@ -2,7 +2,7 @@ const ArtistModule = ( () => {
 
     // Private variables
     let _artists = [];
-    let _artist = {id: 0, name: "", age: 0, genre: "", topHit: "", instrument: "", image: ""};
+    let _artist = {id: 0, name: "", age: 0, genre: "", topHit: "", instrument: "", image: ""}; //this default artist object needs to be exported and imported
 
     // Private methods
     const _addArtist = (artist) => { // Add artist to array
