@@ -2,9 +2,13 @@ const ArtistModule = ( () => {
 
     // Private variables
     let _artists = [];
-    let _artist = {id: 0, name: "", age: 0, genre: "", topHit: "", instrument: "", image: ""}; //this default artist object needs to be exported and imported
+    let _artist;
 
     // Private methods
+    const _getArtistObject = (id, name, age, genre, topHit, instrument, image) => {
+        return _artist = {id: id, name: name, age: age, genre: genre, topHit: topHit, instrument: instrument, image: image};
+    }
+
     const _addArtist = (artist) => { // Add artist to array
         _artists.push(artist);
     };
@@ -33,26 +37,25 @@ const ArtistModule = ( () => {
         return _artists.filter((a) => a.instrument === instrument);
     };
 
+    const _deleteArtistByName = (name) => { // Deletes an artist from the array
+        _artists = _artists.filter((a) => a.name !== name);
+    };
     //map lager array med en valgt property fra hvert element i arrayet
     //filter lager array med elementer som oppfyller en gitt betingelse, den tar bort alt som ikke oppfyller betingelsen og returnerer et nytt array
 
     // LocalStorage
 
-    const _saveArtists = () => { // Saves artists to local storage
-        localStorage.setItem("artists", JSON.stringify(_artists));
+    const _saveArtistsToLocalStorage = () => { // Saves artists to local storage
+        localStorage.setItem("Artists", JSON.stringify(_artists));
     };
 
-    const _loadArtists = () => { // Loads artists from local storage
-        _artists = JSON.parse(localStorage.getItem("artists"));
+    const _loadArtistsFromLocalStorage = () => { // Loads artists from local storage
+        _artists = JSON.parse(localStorage.getItem("Artists"));
     };
-
-    const _deleteArtistByName = (name) => { // Deletes an artist from the array
-        _artists = _artists.filter((a) => a.name !== name);
-    };
-    
 
     // Public methods
     return {
+        getArtistObject: (id, name, age, genre, topHit, instrument, image) => _getArtistObject(id, name, age, genre, topHit, instrument, image),
         addArtist: (artist) => _addArtist(artist),
         getArtist: (artist) => _getArtist(artist),
         getArtists: () => _getArtists(),
@@ -60,8 +63,8 @@ const ArtistModule = ( () => {
         getArtistByAge: (age) => _getArtistByAge(age),
         getArtistByGenre: (genre) => _getArtistByGenre(genre),
         getArtistByInstrument: (instrument) => _getArtistByInstrument(instrument),
-        saveArtists: () => _saveArtists(),
-        loadArtists: () => _loadArtists(),
+        saveArtistsToLocalStorage: () => _saveArtistsToLocalStorage(),
+        loadArtistsFromLocalStorage: () => _loadArtistsFromLocalStorage(),
         deleteArtistByName: (name) => _deleteArtistByName(name)
     };
 
