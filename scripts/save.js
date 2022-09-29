@@ -1,0 +1,1 @@
+import ArtistModule from "./modules/ArtistModule";
