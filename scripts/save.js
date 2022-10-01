@@ -8,18 +8,36 @@ const inputInstrument = document.querySelector("#input-instrument");
 const inputImage = document.querySelector("#input-image");
 const saveBtn = document.querySelector("#save-btn");
 
-let name = inputName.value;
-let age = inputAge.value;
-let genre = inputGenre.value;
-let topHit = inputTopHit.value;
-let instrument = inputInstrument.value;
-let image = inputImage.value;
+let artistsArray;
 
-let artistObject = ArtistModule.getArtistObject(name, age, genre, topHit, instrument, image);
-
-const saveArtist = () => {
-    ArtistModule.addArtist(artistObject);
-    ArtistModule.saveArtistsToLocalStorage();
+const localStorageArrayExist = () => {
+    const doesExist = ArtistModule.getValueFromLocalStorage("Artists") === null ? false : true; // If the array does not exist, return false
+    return doesExist;
 }
 
-saveBtn.addEventListener("click", saveArtist());
+const saveInputToLocalStorage = () => {
+    const name = inputName.value;
+    const age = inputAge.value;
+    const genre = inputGenre.value;
+    const topHit = inputTopHit.value;
+    const instrument = inputInstrument.value;
+    const image = inputImage.value;
+    
+    const artistObject = {name: name, age: age, genre: genre, topHit: topHit, instrument: instrument, image: image};
+    
+    if(localStorageArrayExist() === true) {
+        const parsed = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"));
+        artistsArray = parsed;
+    } else {
+        artistsArray = [];
+    }
+
+    ArtistModule.addArtistObjectToArray(artistsArray, artistObject);
+    const newArtistArray = JSON.stringify(artistsArray);
+    ArtistModule.setValueToLocalStorage("Artists", newArtistArray);
+
+    console.log(artistsArray);
+}
+
+
+saveBtn.addEventListener('click', saveInputToLocalStorage());
