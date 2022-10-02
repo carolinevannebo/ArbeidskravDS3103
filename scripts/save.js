@@ -1,5 +1,5 @@
 import ArtistModule from './modules/ArtistModule.js';
-import spotifyGenres from '../generesAsArray.txt';
+import GenreModule from './modules/GenreModule.js';
 
 const inputName = document.querySelector('#input-name');
 const inputAge = document.querySelector('#input-age');
@@ -19,7 +19,6 @@ const saveInputToLocalStorage = () => {
     const topHit = inputTopHit.value;
     const instrument = inputInstrument.value;
     const image = inputImage.value;
-    
     const artistObject = {name: name, age: age, genre: genre, topHit: topHit, instrument: instrument, image: image};
 
     ArtistModule.addArrayToLocalStorage(artistsArray, artistObject);
@@ -36,17 +35,17 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
 
     !name || !age || !genre || !topHit || !instrument || !image 
         ? outputDiv.innerHTML = "Please fill out all fields" :
-            isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
-                saveInputToLocalStorage();
+            isGenreValid(genre) === false ? outputDiv.innerHTML = "Please enter a valid music genre" :
+                isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
+                    saveInputToLocalStorage();
 }
 
 const isImageUrl = (url) => {
-    return(url.match(/^https?:\/\/.+\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
+    return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
 }
 
-const generateArrayOfGenres = () => {
-    const genresArray = spotifyGenres;
-    return genresArray;
+const isGenreValid = (genre) => { //ikke optimal
+    GenreModule.getAllGenresFromArray().includes(genre);
 }
 
-saveBtn.addEventListener('click', saveInputToLocalStorage);
+saveBtn.addEventListener('click', validateInput);
