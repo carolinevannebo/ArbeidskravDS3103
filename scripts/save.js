@@ -44,7 +44,7 @@ const isImageUrl = (url) => {
     return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
 }
 
-const isGenreValid = (genre) => { //ikke optimal
+const isGenreValid = (genre) => { //ikke optimal, arrayet er jo en string, hva som helst går gjennom
     GenreModule.getAllGenresFromArray().includes(genre);
 }
 
