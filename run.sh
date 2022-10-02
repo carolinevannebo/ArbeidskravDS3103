@@ -1,8 +1,8 @@
 #!/bin/bash
 
-printf "const spotifyGenres=[" >> generes.txt
-while read line
+printf "const spotifyGenres=[" >> generesAsArray.txt
+while read -r line
 do
-  printf "\"%s\"," $line >> generes.txt
-done < genre.txt
-printf "];" >> generes.txt
+  printf "\"%s\"," "$line" >> generesAsArray.txt
+done < genres.txt
+printf "];" >> generesAsArray.txt

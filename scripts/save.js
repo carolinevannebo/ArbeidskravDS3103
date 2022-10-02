@@ -1,4 +1,5 @@
 import ArtistModule from './modules/ArtistModule.js';
+import spotifyGenres from '../generesAsArray.txt';
 
 const inputName = document.querySelector('#input-name');
 const inputAge = document.querySelector('#input-age');
@@ -44,7 +45,8 @@ const isImageUrl = (url) => {
 }
 
 const generateArrayOfGenres = () => {
-    const genresArray = [];
+    const genresArray = spotifyGenres;
+    return genresArray;
 }
 
 saveBtn.addEventListener('click', saveInputToLocalStorage);
