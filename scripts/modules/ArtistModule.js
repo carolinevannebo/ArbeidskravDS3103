@@ -11,8 +11,12 @@ const ArtistModule = ( () => {
     // Private methods
 
     // Array functions
+    const localStorageArrayExist = () => {
+        return getValueFromLocalStorage("Artists") === null ? false : true; // If the array does not exist, return false
+    }
+
     const addArtistObjectToArray = (array, object) => {
-        array.push(object);
+        return array.push(object);
     }
 
     const getAllArtistsFromArray = (array) => array.map(
@@ -24,14 +28,21 @@ const ArtistModule = ( () => {
     }
 
     const setValueToLocalStorage = (key, value) => {
-        localStorage.setItem(key, value);
+        return localStorage.setItem(key, value);
     }
 
     const addArrayToLocalStorage = (array, object) => { //det er litt dumt å kalle funksjonen for legg array til i localstorage, når den sender objekt til array OG så legger arrayet til i localstorage
+        
+        if(localStorageArrayExist() === true) {
+            array = JSON.parse(getValueFromLocalStorage("Artists"));
+        } else {
+            array = [];
+        }
+        
         addArtistObjectToArray(array, object);
         getAllArtistsFromArray(array);
         setValueToLocalStorage("Artists", JSON.stringify(array));
-        array = JSON.parse(getValueFromLocalStorage("Artists"));
+        return array = JSON.parse(getValueFromLocalStorage("Artists"));
     }
 
     // Public methods
