@@ -1,0 +1,19 @@
+{
+  "name": "artistdatabase",
+  "version": "1.0.0",
+  "description": "arbeidskrav",
+  "main": "save.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carolinevannebo/ArbeidskravDS3103.git"
+  },
+  "author": "Caroline Vannebo, Trym Frøystein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carolinevannebo/ArbeidskravDS3103/issues"
+  },
+  "homepage": "https://github.com/carolinevannebo/ArbeidskravDS3103#readme"
+}
