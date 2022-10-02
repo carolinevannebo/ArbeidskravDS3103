@@ -45,7 +45,7 @@ const isImageUrl = (url) => {
 }
 
 const isGenreValid = (genre) => { //ikke optimal, arrayet er jo en string, hva som helst går gjennom
-    GenreModule.getAllGenresFromArray().includes(genre);
+    return GenreModule.getAllGenresFromArray().includes(genre);
 }
 
 saveBtn.addEventListener('click', validateInput);
