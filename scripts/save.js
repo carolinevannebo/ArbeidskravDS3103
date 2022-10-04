@@ -36,7 +36,7 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
 
     !name || !age || !genre || !topHit || !instrument || !image 
         ? outputDiv.innerHTML = "Please fill out all fields" :
-            isGenreValid(genre) === false ? outputDiv.innerHTML = "Please enter a valid music genre" : //funker ikke
+            isGenreValid(genre) === false ? outputDiv.innerHTML = "Please enter a valid music genre" :
                 isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
                     saveInputToLocalStorage();
 }
@@ -58,7 +58,7 @@ const isImageUrl = (url) => {
     return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
 }
 
-const isGenreValid = (genre) => { //ikke optimal, arrayet er jo en string, hva som helst går gjennom
+const isGenreValid = (genre) => {
     return GenreModule.getAllGenresFromArray().includes(genre);
 }
 
