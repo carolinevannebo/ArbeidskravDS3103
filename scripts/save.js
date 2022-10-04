@@ -9,6 +9,7 @@ const inputInstrument = document.querySelector('#input-instrument');
 const inputImage = document.querySelector('#input-image');
 const saveBtn = document.querySelector('#save-btn');
 const outputDiv = document.querySelector('#output-div');
+const showGenresBtn = document.querySelector('#show-genres-btn');
 
 let artistsArray;
 
@@ -39,6 +40,19 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
                 isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
                     saveInputToLocalStorage();
 }
+
+const showGenres = () => {
+    const genres = GenreModule.getAllGenresFromArray();
+    let htmlTxt = "";
+
+    genres.forEach(genre => {   
+        htmlTxt += `<p>${genre}</p>`;
+    });
+
+    outputDiv.innerHTML = htmlTxt;
+}
+
+showGenresBtn.addEventListener('click', showGenres);
 
 const isImageUrl = (url) => {
     return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
