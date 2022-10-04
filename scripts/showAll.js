@@ -12,7 +12,7 @@ const printArtists = (array) => {
         htmlTxt += `
         <article>
             <img src="${artist.image}" alt="${artist.name}">
-            <h2>${artist.name}</h2>
+            <h2 class="artist-title">${artist.name}</h2>
             <p>Age: ${artist.age}
                 <br>Genre: ${artist.genre}
                 <br>Top Hit: ${artist.topHit}

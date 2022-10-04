@@ -41,7 +41,7 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
                     saveInputToLocalStorage();
 }
 
-const showGenres = () => {
+const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, fiks det gjennom modul
     const genres = GenreModule.getAllGenresFromArray();
     let htmlTxt = "";
 
@@ -52,14 +52,13 @@ const showGenres = () => {
     outputDiv.innerHTML = htmlTxt;
 }
 
-showGenresBtn.addEventListener('click', showGenres);
+const isGenreValid = (genre) => {
+    return GenreModule.getAllGenresFromArray().includes(genre);
+}
 
 const isImageUrl = (url) => {
     return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
 }
 
-const isGenreValid = (genre) => {
-    return GenreModule.getAllGenresFromArray().includes(genre);
-}
-
 saveBtn.addEventListener('click', validateInput);
+showGenresBtn.addEventListener('click', showGenres);
