@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="./styles/css/save.css">-->
     <script defer type="module" src="./scripts/save.js"></script>
     <title>Save Artist</title>
 </head>
@@ -25,40 +26,64 @@
     </header>
 
     <main>
-        <section>
+        <section class="input-section">
             <h2>Save Artist</h2>
-            <form id="save-form">
-                <fieldset>
-                    <legend>Fill out information</legend>
+            <form id="save-form" class="save-form">
 
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="input-name">
+              <div class="div-x">
 
-                    <label for="age">Age</label>
-                    <input type="number" name="age" id="input-age">
+                <div class="div-y">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="input-name">
+                </div>
 
-                    <label for="genre">Genre</label>
-                    <input type="text" name="genre" id="input-genre">
+                <div class="div-y">
+                  <label for="age">Age</label>
+                  <input type="number" name="age" id="input-age">
+                </div>
 
-                    <label for="top-hit">Top Hit</label>
-                    <input type="text" name="top-hit" id="input-top-hit">
+              </div>
+              
+              <div class="div-x">
 
-                    <label for="instrument">Instrument</label>
-                    <input type="text" name="instrument" id="input-instrument">
+                <div class="div-y">
+                  <label for="genre">Genre</label>
+                  <input type="text" name="genre" id="input-genre">
+                </div>
 
-                    <label for="image">Image URL</label>
-                    <input type="text" name="image" id="input-image">
+                <div class="div-y">
+                  <label for="top-hit">Top Hit</label>
+                  <input type="text" name="top-hit" id="input-top-hit">
+                </div>
 
-                    <input type="button" id="save-btn" value="Save Artist">
-                    <input type="button" value="show genres" id="show-genres-btn">
+              </div>
 
-                </fieldset>
+              <div class="div-x">
+
+                <div class="div-y">
+                  <label for="instrument">Instrument</label>
+                  <input type="text" name="instrument" id="input-instrument">
+                </div>
+
+                <div class="div-y">
+                  <label for="image">Image URL</label>
+                  <input type="text" name="image" id="input-image">
+                </div>
+
+              </div>
+
+              <div class="div-x">
+                <input type="button" id="save-btn" value="Save Artist">
+                <input type="button" id="show-genres-btn" value="Show Genres">
+              </div>
+
             </form>
-        </section>
 
-        <section>
-          <div id="output-div"></div>
-        </section>
+          </section>
+
+          <section class="output-section">
+            <div id="output-div"></div>
+          </section>
     </main>
     
 </body>
