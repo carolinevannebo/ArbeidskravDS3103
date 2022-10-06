@@ -1,13 +1,5 @@
 const ArtistModule = ( () => {
 
-    // Private variables
-    //let _artists = [];
-    //let _artist;
-
-    /**hva om du lager array her og så lager en
-     * metode som legger inputverdier i parametere til i arrayet via objekter?
-     */
-
     // Private methods
 
     // Array functions
