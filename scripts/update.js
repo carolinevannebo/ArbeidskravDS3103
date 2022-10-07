@@ -1,3 +1,5 @@
+import ArtistModule from "./modules/ArtistModule.js";
+
 const inputArtist = document.querySelector('#input-artist');
 const modifyBtn = document.querySelector('#modify-btn');
 const deleteBtn = document.querySelector('#delete-btn');
@@ -6,8 +8,12 @@ const outputSection = document.querySelector('#output-section');
 let artistArray = ArtistModule.getAllArtistsFromArray(
     JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));
 
+const fetchArtist = (artistName) => {
+    return artistArray.find(artist => artist.name.toLowerCase() === artistName.value.toLowerCase());
+}
+
 const validateInput = (input) => {
-    if (input.value === "") { // du må også sjekke at input.value finnes i det hele tatt
+    if (!input.value || fetchArtist(input) === undefined) { // du må også sjekke at input.value finnes i det hele tatt
         input.classList.add('invalid');
         return false;
     } else {
@@ -16,8 +22,13 @@ const validateInput = (input) => {
     }
 }
 
-const fetchArtist = (artistName) => {
-    return artistArray.find(artist => artist.name.toLowerCase() === artistName.toLowerCase());
+const deleteArtist = (artist) => {
+    if (validateInput(artist) === true) { 
+        artistArray.splice(artistArray.indexOf(artist), 1);
+        ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
+    } else {
+        outputSection.innerHTML = "Artist not found";
+    }
 }
 
 const init = () => {
@@ -90,4 +101,4 @@ const createUpdateForm = () => {
     outputSection.appendChild(form);
 }
 
-modifyBtn.addEventListener('click', createUpdateForm);
+deleteBtn.addEventListener('click', deleteArtist(inputArtist));
