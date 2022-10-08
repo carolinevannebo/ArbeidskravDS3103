@@ -28,6 +28,11 @@ const ArtistModule = ( () => {
 
     const getAllArtistsFromDefaultArray = () => getAllArtistsFromArray(defaultArray);
 
+    const getAllArtistsByNameArray = (array, inputValue) => {
+        let artistsByName = array.filter(
+            artist => artist.name === inputValue);
+        return artistsByName;
+    }
     // LocalStorage functions
     const localStorageArrayExists = () => {
         return getValueFromLocalStorage("Artists") === null ? false : true; // If the array does not exist, return false
@@ -66,6 +71,7 @@ const ArtistModule = ( () => {
         addArtistObjectToArray,
         getAllArtistsFromArray,
         getAllArtistsFromDefaultArray,
+        getAllArtistsByNameArray,
         getValueFromLocalStorage,
         setValueToLocalStorage,
         addArrayToLocalStorage,

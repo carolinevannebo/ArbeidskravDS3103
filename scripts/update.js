@@ -5,11 +5,19 @@ const modifyBtn = document.querySelector('#modify-btn');
 const deleteBtn = document.querySelector('#delete-btn');
 const outputSection = document.querySelector('#output-section');
 
-let artistArray = ArtistModule.getAllArtistsFromArray(
-    JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));
+/*let artistArray = ArtistModule.getAllArtistsFromArray(
+    JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));*/
 
-const fetchArtist = (artistName) => {
+let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"));
+
+
+const fetchArtist = (artistName) => { // we might be able to mark this redundant
     return artistArray.find(artist => artist.name.toLowerCase() === artistName.value.toLowerCase());
+}
+
+const getArtistByName = () => { // new test
+    let artistsByName = ArtistModule.getAllArtistsByNameArray(artistArray, inputArtist.value);
+    return artistsByName;
 }
 
 const validateInput = (input) => {
@@ -26,9 +34,20 @@ const deleteArtist = (artist) => {
     if (validateInput(artist) === true) { 
         artistArray.splice(artistArray.indexOf(artist), 1);
         ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
+        outputSection.innerHTML = "Artist deleted";
     } else {
         outputSection.innerHTML = "Artist not found";
     }
+    console.log(artist);
+    console.log(artistArray);
+}
+
+const removeArtist = () => { // new test
+    let artistToDelete = artistArray.find(artist => artist.name === inputArtist.value);
+    let index = artistArray.indexOf(artistToDelete);
+
+    artistArray.splice(index, 1);
+    ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
 }
 
 const init = () => {
