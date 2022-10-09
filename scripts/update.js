@@ -22,31 +22,31 @@ const getArtistByName = () => { // new test
 
 const validateInput = (input) => {
     if (!input.value || fetchArtist(input) === undefined) { // du må også sjekke at input.value finnes i det hele tatt
-        input.classList.add('invalid');
+        //input.classList.add('invalid');
         return false;
     } else {
-        input.classList.remove('invalid');
+        //input.classList.remove('invalid');
         return true;
     }
 }
 
 const deleteArtist = (artist) => {
     if (validateInput(artist) === true) { 
-        artistArray.splice(artistArray.indexOf(artist), 1);
-        ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
+        /*artistArray.splice(artistArray.indexOf(artist), 1);
+        ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));*/
+        removeArtist();
         outputSection.innerHTML = "Artist deleted";
     } else {
         outputSection.innerHTML = "Artist not found";
     }
-    console.log(artist);
-    console.log(artistArray);
 }
 
 const removeArtist = () => { // new test
-    let artistToDelete = artistArray.find(artist => artist.name === inputArtist.value);
+    /*let artistToDelete = fetchArtist(inputArtist);
     let index = artistArray.indexOf(artistToDelete);
 
-    artistArray.splice(index, 1);
+    artistArray.splice(index, 1);*/
+    artistArray.splice(artistArray.indexOf(fetchArtist(inputArtist)), 1);
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
 }
 
@@ -120,4 +120,6 @@ const createUpdateForm = () => {
     outputSection.appendChild(form);
 }
 
-deleteBtn.addEventListener('click', deleteArtist(inputArtist));
+deleteBtn.addEventListener('click', () => { 
+    deleteArtist(inputArtist);
+});
