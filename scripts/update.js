@@ -8,7 +8,7 @@ const outputSection = document.querySelector('#output-section');
 /*let artistArray = ArtistModule.getAllArtistsFromArray(
     JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));*/
 
-let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"));
+let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")); // bør tydeligvis ikke være global, men lokal
 
 
 const fetchArtist = (artistName) => {
@@ -44,7 +44,7 @@ const updateArtist = (artist) => {
     // oppdater verdier
     // lagre arrayet i localstorage
     if (validateInput(artist) === true) {
-        createUpdateForm();
+        createUpdateForm(); // bør sende artisten inn i funksjonen, så brukeren slipper å skrive inn navnet på nytt
     } else if (validateInput(artist) === false) {
         outputSection.innerHTML = "Artist not found";
     }
@@ -64,7 +64,7 @@ const createUpdateForm = () => {
     const artistName = document.createElement('input');
     artistName.setAttribute('type', 'text');
     artistName.setAttribute('placeholder', 'Artist Name');
-    artistName.setAttribute('id', 'new-artist-name');
+    artistName.setAttribute('id', 'new-artist-name'); // under her kan du sette en value med template literals som kan hente ut verdien fra artisten som skal oppdateres, så brukeren ser hva som er lagret fra før
     artistName.classList.add('input-field');
 
     const artistAge = document.createElement('input');
@@ -127,6 +127,7 @@ const getDataFromForm = () => {
     //sjekk at genre og image er gyldige -> hvis ikke, så skal den ikke oppdateres og brukeren får beskjed om at det er feil
     //hvis alle betingelser møtes oppdateres hver verdi i objektet
 
+    //bør kanskje hente hele recordet fra localstorage og refere til det, og så oppdatere det ?
 
     const newArtist = { // må fikse at dersom en av verdiene under er tom eller invalid, så skal den ikke bli lagt til, men ta fra det som allerede er lagret
         name: newArtistName.value,
