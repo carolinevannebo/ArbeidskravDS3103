@@ -44,7 +44,7 @@ const updateArtist = (artist) => {
     // oppdater verdier
     // lagre arrayet i localstorage
     if (validateInput(artist) === true) {
-        createUpdateForm(); // bør sende artisten inn i funksjonen, så brukeren slipper å skrive inn navnet på nytt
+        createUpdateForm(fetchArtist(artist)); // bør sende artisten inn i funksjonen, så brukeren slipper å skrive inn navnet på nytt
     } else if (validateInput(artist) === false) {
         outputSection.innerHTML = "Artist not found";
     }
@@ -55,7 +55,7 @@ const removeArtistFromArrayAndUpdateLocalStorage = () => { // mi amor <3
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
 }
 
-const createUpdateForm = () => {
+const createUpdateForm = (artist) => {
     outputSection.innerHTML = "";
 
     const form = document.createElement('form');
@@ -64,37 +64,43 @@ const createUpdateForm = () => {
     const artistName = document.createElement('input');
     artistName.setAttribute('type', 'text');
     artistName.setAttribute('placeholder', 'Artist Name');
-    artistName.setAttribute('id', 'new-artist-name'); // under her kan du sette en value med template literals som kan hente ut verdien fra artisten som skal oppdateres, så brukeren ser hva som er lagret fra før
+    artistName.setAttribute('id', 'new-artist-name'); // under her kan du sette en value som kan hente ut verdien fra artisten som skal oppdateres, så brukeren ser hva som er lagret fra før
+    artistName.setAttribute('value', artist.name);
     artistName.classList.add('input-field');
 
     const artistAge = document.createElement('input');
     artistAge.setAttribute('type', 'number');
     artistAge.setAttribute('placeholder', 'Artist Age');
     artistAge.setAttribute('id', 'new-artist-age');
+    artistAge.setAttribute('value', artist.age);
     artistAge.classList.add('input-field');
 
     const artistGenre = document.createElement('input');
     artistGenre.setAttribute('type', 'text');
     artistGenre.setAttribute('placeholder', 'Artist Genre');
     artistGenre.setAttribute('id', 'new-artist-genre');
+    artistGenre.setAttribute('value', artist.genre);
     artistGenre.classList.add('input-field');
 
     const artistTopHit = document.createElement('input');
     artistTopHit.setAttribute('type', 'text');
     artistTopHit.setAttribute('placeholder', 'Artist Top Hit');
     artistTopHit.setAttribute('id', 'new-artist-top-hit');
+    artistTopHit.setAttribute('value', artist.topHit);
     artistTopHit.classList.add('input-field');
 
     const artistInstrument = document.createElement('input');
     artistInstrument.setAttribute('type', 'text');
     artistInstrument.setAttribute('placeholder', 'Artist Instrument');
     artistInstrument.setAttribute('id', 'new-artist-instrument');
+    artistInstrument.setAttribute('value', artist.instrument);
     artistInstrument.classList.add('input-field');
 
     const artistImage = document.createElement('input');
     artistImage.setAttribute('type', 'text');
     artistImage.setAttribute('placeholder', 'Artist Image');
     artistImage.setAttribute('id', 'new-artist-image');
+    artistImage.setAttribute('value', artist.image);
     artistImage.classList.add('input-field');
 
     const saveBtn = document.createElement('input');
