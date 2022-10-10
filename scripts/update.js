@@ -117,7 +117,7 @@ const createUpdateForm = (artist) => {
 
     outputSection.appendChild(form);
 
-    saveBtn.addEventListener('click', () => { // mangler nå input validering
+    saveBtn.addEventListener('click', () => { // mangler nå input validering, BRUK DE DU LAGDE I SAVE
         updateArtistInArrayAndUpdateLocalStorage();
     });
 }

@@ -26,3 +26,5 @@ const printArtists = (array) => {
 showAllBtn.addEventListener('click', () => {
     printArtists(artistArray);
 });
+
+// Bør lage en funksjon som kalles når knappen trykkes på (ved siden av artistnavnet) som sender brukeren til update siden, med infoen skrevet ferdig
