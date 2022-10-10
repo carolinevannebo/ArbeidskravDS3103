@@ -21,7 +21,7 @@ const getArtistByName = () => { // bruker ikke enda
 }
 
 const validateInput = (input) => {
-    if (!input.value || fetchArtist(input) === undefined) { // du må også sjekke at input.value finnes i det hele tatt
+    if (!input.value || fetchArtist(input) === undefined) {
         input.classList.add('invalid');
         return false;
     } else {
@@ -40,11 +40,8 @@ const deleteArtist = (artist) => {
 }
 
 const updateArtist = (artist) => {
-    // finn artisten i arrayet
-    // oppdater verdier
-    // lagre arrayet i localstorage
     if (validateInput(artist) === true) {
-        createUpdateForm(fetchArtist(artist)); // bør sende artisten inn i funksjonen, så brukeren slipper å skrive inn navnet på nytt
+        createUpdateForm(fetchArtist(artist));
     } else if (validateInput(artist) === false) {
         outputSection.innerHTML = "Artist not found";
     }
@@ -64,7 +61,7 @@ const createUpdateForm = (artist) => {
     const artistName = document.createElement('input');
     artistName.setAttribute('type', 'text');
     artistName.setAttribute('placeholder', 'Artist Name');
-    artistName.setAttribute('id', 'new-artist-name'); // under her kan du sette en value som kan hente ut verdien fra artisten som skal oppdateres, så brukeren ser hva som er lagret fra før
+    artistName.setAttribute('id', 'new-artist-name');
     artistName.setAttribute('value', artist.name);
     artistName.classList.add('input-field');
 
@@ -120,7 +117,7 @@ const createUpdateForm = (artist) => {
 
     outputSection.appendChild(form);
 
-    saveBtn.addEventListener('click', () => {
+    saveBtn.addEventListener('click', () => { // mangler nå input validering
         updateArtistInArrayAndUpdateLocalStorage();
     });
 }
@@ -154,12 +151,6 @@ const getDataFromForm = () => {
 const updateArtistInArrayAndUpdateLocalStorage = () => {
     artistArray.splice(artistArray.indexOf(fetchArtist(inputArtist)), 1, getDataFromForm());
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
-}
-
-const init = () => {
-    // hvis validateInput returnerer false, eller fetchArtist returnerer undefined, så vil ikke koden under kjøre
-    // deleteBtn => deleteArtist()
-    // modifyBtn => createUpdateForm() + saveBtn => updateArtist()
 }
 
 updateBtn.addEventListener('click', () => {
