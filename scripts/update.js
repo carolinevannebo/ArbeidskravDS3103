@@ -11,11 +11,11 @@ const outputSection = document.querySelector('#output-section');
 let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"));
 
 
-const fetchArtist = (artistName) => { // we might be able to mark this redundant
+const fetchArtist = (artistName) => {
     return artistArray.find(artist => artist.name.toLowerCase() === artistName.value.toLowerCase());
 }
 
-const getArtistByName = () => { // new test
+const getArtistByName = () => { // bruker ikke enda
     let artistsByName = ArtistModule.getAllArtistsByNameArray(artistArray, inputArtist.value);
     return artistsByName;
 }
@@ -31,21 +31,15 @@ const validateInput = (input) => {
 }
 
 const deleteArtist = (artist) => {
-    if (validateInput(artist) === true) { 
-        /*artistArray.splice(artistArray.indexOf(artist), 1);
-        ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));*/
+    if (validateInput(artist) === true) {
         removeArtist();
         outputSection.innerHTML = "Artist deleted";
-    } else {
+    } else if (validateInput(artist) === false) {
         outputSection.innerHTML = "Artist not found";
     }
 }
 
-const removeArtist = () => { // new test
-    /*let artistToDelete = fetchArtist(inputArtist);
-    let index = artistArray.indexOf(artistToDelete);
-
-    artistArray.splice(index, 1);*/
+const removeArtist = () => { // mi amor <3
     artistArray.splice(artistArray.indexOf(fetchArtist(inputArtist)), 1);
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
 }
