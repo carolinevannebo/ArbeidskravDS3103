@@ -123,12 +123,17 @@ const getDataFromForm = () => {
     const newArtistInstrument = document.querySelector('#new-artist-instrument');
     const newArtistImage = document.querySelector('#new-artist-image');
 
+    //sjekk om input er tom -> hvis det er tom, så skal den ikke oppdateres
+    //sjekk at genre og image er gyldige -> hvis ikke, så skal den ikke oppdateres og brukeren får beskjed om at det er feil
+    //hvis alle betingelser møtes oppdateres hver verdi i objektet
+
+
     const newArtist = { // må fikse at dersom en av verdiene under er tom eller invalid, så skal den ikke bli lagt til, men ta fra det som allerede er lagret
-        name: newArtistName.value,
-        age: newArtistAge.value,
+        name: newArtistName.value ? fetchArtist(inputArtist).name = newArtistName.value : null,
+        age: newArtistAge.value ? fetchArtist(inputArtist).age = newArtistAge.value : null,
         genre: newArtistGenre.value,
-        topHit: newArtistTopHit.value,
-        instrument: newArtistInstrument.value,
+        topHit: newArtistTopHit.value ? fetchArtist(inputArtist).topHit = newArtistTopHit.value : null,
+        instrument: newArtistInstrument.value ? fetchArtist(inputArtist).instrument = newArtistInstrument.value : null,
         image: newArtistImage.value
     }
 
