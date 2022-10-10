@@ -119,6 +119,10 @@ const createUpdateForm = (artist) => {
     form.appendChild(saveBtn);
 
     outputSection.appendChild(form);
+
+    saveBtn.addEventListener('click', () => {
+        updateArtistInArrayAndUpdateLocalStorage();
+    });
 }
 
 const getDataFromForm = () => {
