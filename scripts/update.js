@@ -129,11 +129,11 @@ const getDataFromForm = () => {
 
 
     const newArtist = { // må fikse at dersom en av verdiene under er tom eller invalid, så skal den ikke bli lagt til, men ta fra det som allerede er lagret
-        name: newArtistName.value ? fetchArtist(inputArtist).name = newArtistName.value : null,
-        age: newArtistAge.value ? fetchArtist(inputArtist).age = newArtistAge.value : null,
+        name: newArtistName.value,
+        age: newArtistAge.value,
         genre: newArtistGenre.value,
-        topHit: newArtistTopHit.value ? fetchArtist(inputArtist).topHit = newArtistTopHit.value : null,
-        instrument: newArtistInstrument.value ? fetchArtist(inputArtist).instrument = newArtistInstrument.value : null,
+        topHit: newArtistTopHit.value,
+        instrument: newArtistInstrument.value,
         image: newArtistImage.value
     }
 
