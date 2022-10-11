@@ -1,4 +1,5 @@
 import ArtistModule from "./modules/ArtistModule.js";
+import GenreModule from "./modules/GenreModule.js";
 
 const inputArtist = document.querySelector('#input-artist');
 const updateBtn = document.querySelector('#update-btn');
@@ -118,8 +119,16 @@ const createUpdateForm = (artist) => {
     outputSection.appendChild(form);
 
     saveBtn.addEventListener('click', () => { // mangler nå input validering, BRUK DE DU LAGDE I SAVE
-        updateArtistInArrayAndUpdateLocalStorage();
+        validateNewInput();
     });
+}
+
+const validateNewInput = () => {
+    if (GenreModule.isGenreValid(document.querySelector('#new-artist-genre').value) === false || ArtistModule.isImageUrl(document.querySelector('#new-artist-image').value) === false) {
+        alert('Invalid input');
+    } else {
+        updateArtistInArrayAndUpdateLocalStorage();
+    }
 }
 
 const getDataFromForm = () => {
@@ -129,10 +138,6 @@ const getDataFromForm = () => {
     const newArtistTopHit = document.querySelector('#new-artist-top-hit');
     const newArtistInstrument = document.querySelector('#new-artist-instrument');
     const newArtistImage = document.querySelector('#new-artist-image');
-
-    //sjekk om input er tom -> hvis det er tom, så skal den ikke oppdateres
-    //sjekk at genre og image er gyldige -> hvis ikke, så skal den ikke oppdateres og brukeren får beskjed om at det er feil
-    //hvis alle betingelser møtes oppdateres hver verdi i objektet
 
     //bør kanskje hente hele recordet fra localstorage og refere til det, og så oppdatere det ?
 

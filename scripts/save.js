@@ -40,8 +40,8 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
 
     !name || !age || !genre || !topHit || !instrument || !image 
         ? outputDiv.innerHTML = "Please fill out all fields" :
-            isGenreValid(genre) === false ? outputDiv.innerHTML = "Please enter a valid music genre" :
-                isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
+            GenreModule.isGenreValid(genre) === false ? outputDiv.innerHTML = "Please enter a valid music genre" :
+                ArtistModule.isImageUrl(image) === false ? outputDiv.innerHTML = "Please enter a valid image url" :
                     saveInputToLocalStorage();
 }
 
@@ -56,13 +56,13 @@ const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, 
     outputDiv.innerHTML = htmlTxt;
 }
 
-const isGenreValid = (genre) => {
+/*const isGenreValid = (genre) => { // flytt til modul for å kunne bruke i update.js også
     return GenreModule.getAllGenresFromArray().includes(genre);
-}
+}*/
 
-const isImageUrl = (url) => {
+/*const isImageUrl = (url) => { // flytt til modul for å kunne bruke i update.js også
     return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
-}
+}*/
 
 const addDefaultArray = () => {
     ArtistModule.addDefaultArrayToLocalStorage(artistsArray);

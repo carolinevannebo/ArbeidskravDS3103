@@ -7,8 +7,13 @@ const GenreModule = ( () => {
 
     const getAllGenresFromArray = () => spotifyGenres;
 
+    const isGenreValid = (genre) => {
+        return getAllGenresFromArray().includes(genre);
+    }
+
     return {
-        getAllGenresFromArray
+        getAllGenresFromArray,
+        isGenreValid
     };
 
 })();

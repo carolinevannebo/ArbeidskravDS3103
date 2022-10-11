@@ -66,6 +66,12 @@ const ArtistModule = ( () => {
         });
     }
 
+    // Validation functions
+
+    const isImageUrl = (url) => {
+        return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
+    }
+
     // Public methods
     return {
         addArtistObjectToArray,
@@ -75,7 +81,8 @@ const ArtistModule = ( () => {
         getValueFromLocalStorage,
         setValueToLocalStorage,
         addArrayToLocalStorage,
-        addDefaultArrayToLocalStorage
+        addDefaultArrayToLocalStorage,
+        isImageUrl
     };
 
 })();
