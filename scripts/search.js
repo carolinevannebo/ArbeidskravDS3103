@@ -41,6 +41,10 @@ const showArtists = async () => { // Funksjonen venter på at fetchArtists skal 
     outputSection.appendChild(ul); // og ul blir child til outputSection :)
 }
 
+const getArtistObjectValue = (artistObject, value) => {
+    return artistObject[value];
+}
+
 //showArtists();
 
 searchBar.addEventListener('input', e => { // Lytter etter input i søkefeltet
