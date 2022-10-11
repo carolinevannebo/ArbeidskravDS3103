@@ -108,6 +108,9 @@ const createUpdateForm = (artist) => {
     saveBtn.innerText = 'Submit';
     saveBtn.classList.add('btn');
 
+    const outputDiv = document.createElement('div');
+    outputDiv.setAttribute('id', 'output-div');
+
     form.appendChild(artistName);
     form.appendChild(artistAge);
     form.appendChild(artistGenre);
@@ -117,18 +120,31 @@ const createUpdateForm = (artist) => {
     form.appendChild(saveBtn);
 
     outputSection.appendChild(form);
+    outputSection.appendChild(outputDiv);
 
-    saveBtn.addEventListener('click', () => { // mangler nå input validering, BRUK DE DU LAGDE I SAVE
+    saveBtn.addEventListener('click', () => {
         validateNewInput();
     });
 }
 
 const validateNewInput = () => {
-    if (GenreModule.isGenreValid(document.querySelector('#new-artist-genre').value) === false || ArtistModule.isImageUrl(document.querySelector('#new-artist-image').value) === false) {
-        alert('Invalid input');
-    } else {
-        updateArtistInArrayAndUpdateLocalStorage();
-    }
+    let newArtistName = document.querySelector('#new-artist-name');
+    let newArtistAge = document.querySelector('#new-artist-age');
+    let newArtistGenre = document.querySelector('#new-artist-genre');
+    let newArtistTopHit = document.querySelector('#new-artist-top-hit');
+    let newArtistInstrument = document.querySelector('#new-artist-instrument');
+    let newArtistImage = document.querySelector('#new-artist-image');
+    let outputDiv = document.querySelector('#output-div');
+
+    !newArtistName.value || !newArtistAge.value || 
+    !newArtistGenre.value || !newArtistTopHit.value || 
+    !newArtistInstrument.value || !newArtistImage.value ?
+        outputDiv.innerHTML = "Please fill out all fields" :
+            GenreModule.isGenreValid(document.querySelector('#new-artist-genre').value) === false || 
+            ArtistModule.isImageUrl(document.querySelector('#new-artist-image').value) === false ?
+                outputDiv.innerHTML = "Invalid input" :
+                    updateArtistInArrayAndUpdateLocalStorage(),
+                    outputDiv.innerHTML = "Artist updated";
 }
 
 const getDataFromForm = () => {
@@ -138,8 +154,6 @@ const getDataFromForm = () => {
     const newArtistTopHit = document.querySelector('#new-artist-top-hit');
     const newArtistInstrument = document.querySelector('#new-artist-instrument');
     const newArtistImage = document.querySelector('#new-artist-image');
-
-    //bør kanskje hente hele recordet fra localstorage og refere til det, og så oppdatere det ?
 
     const newArtist = { // må fikse at dersom en av verdiene under er tom eller invalid, så skal den ikke bli lagt til, men ta fra det som allerede er lagret
         name: newArtistName.value,
