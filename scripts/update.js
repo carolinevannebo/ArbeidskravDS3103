@@ -155,7 +155,7 @@ const getDataFromForm = () => {
     const newArtistInstrument = document.querySelector('#new-artist-instrument');
     const newArtistImage = document.querySelector('#new-artist-image');
 
-    const newArtist = { // må fikse at dersom en av verdiene under er tom eller invalid, så skal den ikke bli lagt til, men ta fra det som allerede er lagret
+    const newArtist = {
         name: newArtistName.value,
         age: newArtistAge.value,
         genre: newArtistGenre.value,
