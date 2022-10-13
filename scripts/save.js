@@ -49,11 +49,18 @@ const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, 
     const genres = GenreModule.getAllGenresFromArray();
     let htmlTxt = "";
 
+    
     genres.forEach(genre => {   
-        htmlTxt += `<p>${genre}</p>`;
+        htmlTxt += `
+            <article class="col-3">
+                ${genre}
+            </article>
+        
+        `;
     });
+    let container = `<h3 class="col-12">All Genres</h3><div class="row col-12">${htmlTxt}</div>`;
 
-    outputDiv.innerHTML = htmlTxt;
+    outputDiv.innerHTML = container;
 }
 
 /*const isGenreValid = (genre) => { // flytt til modul for å kunne bruke i update.js også
