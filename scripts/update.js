@@ -120,7 +120,7 @@ const createUpdateForm = (artist) => {
     saveBtn.setAttribute('value', 'Save');
     saveBtn.innerText = 'Submit';
     saveBtn.classList.add('btn');
-    saveBtn.classList.add('btn-dark');
+    saveBtn.classList.add('btn-danger');
     saveBtn.classList.add('col-12');
     saveBtn.classList.add('mt-2');
 
