@@ -56,8 +56,12 @@ const removeArtistFromArrayAndUpdateLocalStorage = () => { // mi amor <3
 const createUpdateForm = (artist) => {
     outputSection.innerHTML = "";
 
+
     const form = document.createElement('form');
     form.classList.add('update-form');
+    form.classList.add('container-fluid');
+    form.classList.add('row');
+    form.classList.add('p-4');
 
     const artistName = document.createElement('input');
     artistName.setAttribute('type', 'text');
@@ -65,6 +69,8 @@ const createUpdateForm = (artist) => {
     artistName.setAttribute('id', 'new-artist-name');
     artistName.setAttribute('value', artist.name);
     artistName.classList.add('input-field');
+    artistName.classList.add('col-2');
+    artistName.classList.add('p-1');
 
     const artistAge = document.createElement('input');
     artistAge.setAttribute('type', 'number');
@@ -72,6 +78,8 @@ const createUpdateForm = (artist) => {
     artistAge.setAttribute('id', 'new-artist-age');
     artistAge.setAttribute('value', artist.age);
     artistAge.classList.add('input-field');
+    artistAge.classList.add('col-2');
+
 
     const artistGenre = document.createElement('input');
     artistGenre.setAttribute('type', 'text');
@@ -79,6 +87,8 @@ const createUpdateForm = (artist) => {
     artistGenre.setAttribute('id', 'new-artist-genre');
     artistGenre.setAttribute('value', artist.genre);
     artistGenre.classList.add('input-field');
+    artistGenre.classList.add('col-2');
+
 
     const artistTopHit = document.createElement('input');
     artistTopHit.setAttribute('type', 'text');
@@ -86,6 +96,7 @@ const createUpdateForm = (artist) => {
     artistTopHit.setAttribute('id', 'new-artist-top-hit');
     artistTopHit.setAttribute('value', artist.topHit);
     artistTopHit.classList.add('input-field');
+    artistTopHit.classList.add('col-2');
 
     const artistInstrument = document.createElement('input');
     artistInstrument.setAttribute('type', 'text');
@@ -93,6 +104,7 @@ const createUpdateForm = (artist) => {
     artistInstrument.setAttribute('id', 'new-artist-instrument');
     artistInstrument.setAttribute('value', artist.instrument);
     artistInstrument.classList.add('input-field');
+    artistInstrument.classList.add('col-2');
 
     const artistImage = document.createElement('input');
     artistImage.setAttribute('type', 'text');
@@ -100,6 +112,7 @@ const createUpdateForm = (artist) => {
     artistImage.setAttribute('id', 'new-artist-image');
     artistImage.setAttribute('value', artist.image);
     artistImage.classList.add('input-field');
+    artistImage.classList.add('col-2');
 
     const saveBtn = document.createElement('input');
     saveBtn.setAttribute('type', 'button');
@@ -107,6 +120,9 @@ const createUpdateForm = (artist) => {
     saveBtn.setAttribute('value', 'Save');
     saveBtn.innerText = 'Submit';
     saveBtn.classList.add('btn');
+    saveBtn.classList.add('btn-dark');
+    saveBtn.classList.add('col-12');
+    saveBtn.classList.add('mt-2');
 
     const outputDiv = document.createElement('div');
     outputDiv.setAttribute('id', 'output-div');
@@ -118,6 +134,7 @@ const createUpdateForm = (artist) => {
     form.appendChild(artistInstrument);
     form.appendChild(artistImage);
     form.appendChild(saveBtn);
+
 
     outputSection.appendChild(form);
     outputSection.appendChild(outputDiv);
