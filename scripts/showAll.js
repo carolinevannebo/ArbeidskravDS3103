@@ -13,7 +13,7 @@ const printArtists = (array) => {
 
     array.forEach((artist) => {
         htmlTxt += `
-        <article class="artist-article">
+        <article class="artist-article" id="${array.indexOf(artist)}">
 
             <div class="contain-img">
                 <img src="${artist.image}" alt="${artist.name}">
