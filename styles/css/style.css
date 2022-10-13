@@ -12,10 +12,10 @@ body {
 header {
     height: 30vh;
     width: 100vw;
-    display: flex;
+    /*display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
 }
 
 header h1 {
@@ -24,22 +24,21 @@ header h1 {
     text-transform: uppercase;
     text-align: center;
 }
-
+/*
 nav ul {
     justify-content: center;
-}
+}*/
 
 ul {
     list-style: none;
-    display: flex;
-    flex-direction: row;
+    /*display: flex;
+    flex-direction: row;*/
 }
-
+/*
 li {
     margin: 0 10px;
-}
+}*/
 
 main {
-    margin-top: 20vh;
     width: 100vw;
 }
