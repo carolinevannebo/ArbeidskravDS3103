@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/bootstrap-css/bootstrap-min.css">
     <link rel="stylesheet" href="./styles/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unlock&display=swap" rel="stylesheet">
     <script defer type="module" src="./scripts/showAll.js"></script>
     <title>Show All Artists</title>
 </head>
 <body>
 
-    <header>
-      <h1>Artist Database</h1>
-      <nav>
-        <ul>
-          <li><a href="./indexShowAll.html">Show All Artists</a></li>
-          <li><a href="./save.html">Save New Artist</a></li>
-          <li><a href="./search.html">Search Artist</a></li>
-          <li><a href="./update.html">Update Artist</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header class="container-fluid row align-items-center p-0 m-0 text-center text-dark">
+    <h1 class="display-5 text-uppercase">Artist Database</h1>
+    <nav>
+      <ul class="row align-items-center justify-content-around list-unstyled">
+        <li class="col-sm-3"></li>
+        <li class="col-sm"><a href="./indexShowAll.html" class="text-dark p-1 border-bottom border-dark text-decoration-none">Show All</a></li>
+        <li class="col-sm"><a href="./save.html" class="text-dark p-1 border-bottom border-dark text-decoration-none">Save New</a></li>
+        <li class="col-sm"><a href="./search.html" class="text-dark p-1 border-bottom border-dark text-decoration-none">Search</a></li>
+        <li class="col-sm"><a href="./update.html" class="text-dark p-1 border-bottom border-dark text-decoration-none">Update</a></li>
+        <li class="col-sm-3"></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <input class="btn btn-dark" type="button" value="Show Artist Database" id="show-all-btn">
+  <main class="container-fluid row bg-dark align-items-center">
+      <input class="btn btn-light" type="button" value="Show Artist Database" id="show-all-btn">
         
-        <div id="output-div"></div>
-    </main>
+      <div id="output-div"></div>
+  </main>
 
-    <footer></footer>
+  <footer class="container-fluid"></footer>
     
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
