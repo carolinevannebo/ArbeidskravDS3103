@@ -1,0 +1,35 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-top: 10px;
+}
+
+.artist-article {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    background-color: #2c2c2cca;
+}
+
+.artist-info {
+    height: 40%;
+    width: 100%;
+    color: #d8c8af;
+    margin: 1rem 1rem 1rem 2rem;
+}
+
+.contain-img {
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contain-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

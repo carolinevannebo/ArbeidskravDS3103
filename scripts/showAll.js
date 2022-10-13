@@ -10,19 +10,27 @@ let artistArray = ArtistModule.getAllArtistsFromArray(
 
 const printArtists = (array) => {
     let htmlTxt = "";
+
     array.forEach((artist) => {
         htmlTxt += `
-        <article>
-            <img src="${artist.image}" alt="${artist.name}">
-            <h2 class="artist-title">${artist.name}</h2>
-            <p>Age: ${artist.age}
-                <br>Genre: ${artist.genre}
-                <br>Top Hit: ${artist.topHit}
-                <br>Instrument: ${artist.instrument}
-            </p>
+        <article class="artist-article">
+
+            <div class="contain-img">
+                <img src="${artist.image}" alt="${artist.name}">
+            </div>
+
+            <div class="artist-info">
+                <h2 class="artist-title">${artist.name}</h2>
+                <p>Age: ${artist.age}
+                    <br>Genre: ${artist.genre}
+                    <br>Top Hit: ${artist.topHit}
+                    <br>Instrument: ${artist.instrument}
+                </p>
+            </div>
         </article>`;
     });
-    outputDiv.innerHTML = htmlTxt;
+    let wrapper = `<div class="wrapper">${htmlTxt}</div>`;
+    outputDiv.innerHTML = wrapper;
     showAllBtn.style.display = "none";
     outputDiv.style.display = "block";
 }
