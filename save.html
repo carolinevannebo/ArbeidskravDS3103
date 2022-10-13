@@ -29,12 +29,12 @@
   </header>
 
     <main>
-        <section class="container">
-          <h2 class="display-5">Save Artist</h2>
+        <section class="container-fluid">
           <form id="save-form">
-
+            <h2 class="display-5 col-12 text-align-end">Save Artist</h2>
+            
+              <div>
                 <div class="mb-2 col-12">
-                  <h2 class="display-5">Save Artist</h2>
                   <label class="form-label" for="name">Name</label>
                   <input class="form-control" type="text" name="name" id="input-name" required>
                 </div>
@@ -44,7 +44,7 @@
                   <input class="form-control" type="number" name="age" id="input-age" required>
                 </div>
 
-                <div class="mb-2 col-12">
+                <div class="mb-2 col-12 ">
                   <label class="form-label" for="genre">Genre</label>
                   <input class="form-control" type="text" name="genre" id="input-genre" required>
                 </div>
@@ -59,15 +59,13 @@
                   <input class="form-control" type="text" name="instrument" id="input-instrument" required>
                 </div>
 
-                <div class="mb-2 col-12">
+                <div class="mb-5 col-12">
                   <label class="form-label" for="image">Image URL</label>
                   <input class="form-control" type="text" name="image" id="input-image" required>
                 </div>
+              </div>
 
-                <style>
-
-                </style>
-              <div class="mb-2 row justify-content-around">
+              <div class="mb-5 m-0 p-0 col-12 row justify-content-around">
                 <input class="col-3 btn btn-dark" type="button" id="save-btn" value="Save Artist">
                 <input class="col-3 btn btn-dark" type="button" id="add-default-array-btn" value="Add Default List of Artists">
                 <input class="col-3 btn btn-dark" type="button" id="show-genres-btn" value="Show Genres">
@@ -75,9 +73,8 @@
 
             </form>
 
-          </section>
-
-          <section class="container">
+        </section>
+          <section class="m-2 p-2">
             <div id="output-div"></div>
           </section>
     </main>
