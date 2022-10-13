@@ -3,6 +3,8 @@ import ArtistModule from "./modules/ArtistModule.js";
 const showAllBtn = document.querySelector('#show-all-btn');
 const outputDiv = document.querySelector('#output-div');
 
+outputDiv.style.display = "none";
+
 let artistArray = ArtistModule.getAllArtistsFromArray(
     JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"))); //du bør sjekke om du kan hente uten å parse
 
@@ -21,6 +23,8 @@ const printArtists = (array) => {
         </article>`;
     });
     outputDiv.innerHTML = htmlTxt;
+    showAllBtn.style.display = "none";
+    outputDiv.style.display = "block";
 }
 
 showAllBtn.addEventListener('click', () => {
