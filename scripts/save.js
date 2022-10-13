@@ -74,6 +74,7 @@ const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, 
 const addDefaultArray = () => {
     ArtistModule.addDefaultArrayToLocalStorage(artistsArray);
     outputDiv.innerHTML = "Default array added to list";
+    addDefaultArrayBtn.style.display = "none";
 }
 
 saveBtn.addEventListener('click', validateInput);
