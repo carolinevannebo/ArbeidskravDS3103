@@ -27,3 +27,9 @@ main {
     top: 20vh;
     height: 80vh;
 }
+footer {
+    position: fixed;
+    height: 30px;
+    bottom: 0;
+    width: 100%;
+}
