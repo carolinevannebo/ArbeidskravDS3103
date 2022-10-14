@@ -30,7 +30,7 @@ const saveInputToLocalStorage = () => {
     saveForm.reset();
 }
 
-const validateInput = () => { // Kan du få til å ikke repetere inputfeltene her?
+const validateInput = () => { // Kan du få til å ikke repetere inputfeltene her? Finn ut hvorfor globale variabler ikke funker
     const name = inputName.value;
     const age = inputAge.value;
     const genre = inputGenre.value;
@@ -45,31 +45,21 @@ const validateInput = () => { // Kan du få til å ikke repetere inputfeltene he
                     saveInputToLocalStorage();
 }
 
-const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, fiks det gjennom modul
+const showGenres = () => { //burde lage en funksjon hvor du kan søke i genres, slik som du søker etter artister i search.js
     const genres = GenreModule.getAllGenresFromArray();
     let htmlTxt = "";
-
     
     genres.forEach(genre => {   
         htmlTxt += `
             <article class="col-3">
                 ${genre}
             </article>
-        
         `;
     });
-    let container = `<h3 class="col-12">All Genres</h3><div class="row col-12">${htmlTxt}</div>`;
 
+    let container = `<h3 class="col-12">All Genres</h3><div class="row col-12">${htmlTxt}</div>`;
     outputDiv.innerHTML = container;
 }
-
-/*const isGenreValid = (genre) => { // flytt til modul for å kunne bruke i update.js også
-    return GenreModule.getAllGenresFromArray().includes(genre);
-}*/
-
-/*const isImageUrl = (url) => { // flytt til modul for å kunne bruke i update.js også
-    return(url.match(/\.(jpeg|jpg|gif|png|webp|svg|avif)$/) != null);
-}*/
 
 const addDefaultArray = () => {
     ArtistModule.addDefaultArrayToLocalStorage(artistsArray);

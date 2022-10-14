@@ -6,7 +6,7 @@ const outputDiv = document.querySelector('#output-div');
 outputDiv.style.display = "none";
 
 let artistArray = ArtistModule.getAllArtistsFromArray(
-    JSON.parse(ArtistModule.getValueFromLocalStorage("Artists"))); //du bør sjekke om du kan hente uten å parse
+    JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));
 
 const printArtists = (array) => {
     let htmlTxt = "";
@@ -39,4 +39,6 @@ showAllBtn.addEventListener('click', () => {
     printArtists(artistArray);
 });
 
-// Bør lage en funksjon som kalles når knappen trykkes på (ved siden av artistnavnet) som sender brukeren til update siden, med infoen skrevet ferdig
+/* Bør lage en funksjon som kalles når knappen trykkes på (ved siden av artistnavnet) som sender brukeren til update siden, med infoen skrevet ferdig
+   Problem: hvordan får jeg tak i artikkelen som ikke eksisteres før knappen trykkes på?
+*/

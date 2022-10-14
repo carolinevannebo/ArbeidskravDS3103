@@ -1,3 +1,7 @@
+* {
+    scroll-behavior: smooth;
+}
+
 header {
     background-image: url(../../media/concert-bg.webp);
     height: 20vh;

@@ -30,7 +30,7 @@ const showArtists = async () => { // Funksjonen venter på at fetchArtists skal 
             artistName.classList.add('artist-name');
 
             /*const artistLink = document.createElement('a');
-            artistLink.href = `./indexShowAll#${artist.id}`;
+            artistLink.href = `./indexShowAll#${artist.id}`;    - Problem: ikke funnet ut av hvordan gå rett til artikkelen, uten å måtte trykke på knappen
             artistLink.innerText = "Show artist";
             artistLink.classList.add('artist-link');*/
 

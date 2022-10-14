@@ -6,24 +6,15 @@ const updateBtn = document.querySelector('#update-btn');
 const deleteBtn = document.querySelector('#delete-btn');
 const outputSection = document.querySelector('#output-section');
 
-/*let artistArray = ArtistModule.getAllArtistsFromArray(
-    JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")));*/
+let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")); // bør tydeligvis ikke være global, men lokal? Undersøk mer om forskjellene i et større prosjekt
 
-let artistArray = JSON.parse(ArtistModule.getValueFromLocalStorage("Artists")); // bør tydeligvis ikke være global, men lokal
-
-
-const fetchArtist = (artistName) => {
+const fetchArtist = (artistName) => { // Returnerer true hvis inputverdien matcher en artist i lokalstorage
     return artistArray.find(artist => artist.name.toLowerCase() === artistName.value.toLowerCase());
-}
-
-const getArtistByName = () => { // bruker ikke enda
-    let artistsByName = ArtistModule.getAllArtistsByNameArray(artistArray, inputArtist.value);
-    return artistsByName;
 }
 
 const validateInput = (input) => {
     if (!input.value || fetchArtist(input) === undefined) {
-        input.classList.add('invalid');
+        input.classList.add('invalid'); // Plan: stilsett klassen .invalid i css
         return false;
     } else {
         input.classList.remove('invalid');
@@ -31,8 +22,8 @@ const validateInput = (input) => {
     }
 }
 
-const deleteArtist = (artist) => {
-    if (validateInput(artist) === true) {
+const deleteArtist = (artist) => { // Kalles når delete-knappen trykkes
+    if (validateInput(artist) === true) { // Sjekker om artisten finnes
         removeArtistFromArrayAndUpdateLocalStorage();
         outputSection.innerHTML = "Artist deleted";
     } else if (validateInput(artist) === false) {
@@ -40,22 +31,21 @@ const deleteArtist = (artist) => {
     }
 }
 
-const updateArtist = (artist) => {
-    if (validateInput(artist) === true) {
-        createUpdateForm(fetchArtist(artist));
+const updateArtist = (artist) => { // Kalles når update-knappen trykkes
+    if (validateInput(artist) === true) { // Sjekker om artisten finnes
+        createUpdateForm(fetchArtist(artist)); // Lager et form for å oppdatere artisten
     } else if (validateInput(artist) === false) {
         outputSection.innerHTML = "Artist not found";
     }
 }
 
-const removeArtistFromArrayAndUpdateLocalStorage = () => { // mi amor <3
+const removeArtistFromArrayAndUpdateLocalStorage = () => { // Manipulerer arrayet og setter det som ny verdi til localstorage
     artistArray.splice(artistArray.indexOf(fetchArtist(inputArtist)), 1);
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
 }
 
 const createUpdateForm = (artist) => {
     outputSection.innerHTML = "";
-
 
     const form = document.createElement('form');
     form.classList.add('update-form');
@@ -80,7 +70,6 @@ const createUpdateForm = (artist) => {
     artistAge.classList.add('input-field');
     artistAge.classList.add('col-2');
 
-
     const artistGenre = document.createElement('input');
     artistGenre.setAttribute('type', 'text');
     artistGenre.setAttribute('placeholder', 'Artist Genre');
@@ -88,7 +77,6 @@ const createUpdateForm = (artist) => {
     artistGenre.setAttribute('value', artist.genre);
     artistGenre.classList.add('input-field');
     artistGenre.classList.add('col-2');
-
 
     const artistTopHit = document.createElement('input');
     artistTopHit.setAttribute('type', 'text');
@@ -135,7 +123,6 @@ const createUpdateForm = (artist) => {
     form.appendChild(artistImage);
     form.appendChild(saveBtn);
 
-
     outputSection.appendChild(form);
     outputSection.appendChild(outputDiv);
 
@@ -144,7 +131,7 @@ const createUpdateForm = (artist) => {
     });
 }
 
-const validateNewInput = () => {
+const validateNewInput = () => { // Dersom noen inputfelt i det nye skjemaet et tomme, sjanger er ugyldig eller link ikke er et bilde, skrives feilmelding ut, ellers oppdateres artisten
     let newArtistName = document.querySelector('#new-artist-name');
     let newArtistAge = document.querySelector('#new-artist-age');
     let newArtistGenre = document.querySelector('#new-artist-genre');
@@ -187,7 +174,9 @@ const getDataFromForm = () => {
 const updateArtistInArrayAndUpdateLocalStorage = () => {
     artistArray.splice(artistArray.indexOf(fetchArtist(inputArtist)), 1, getDataFromForm());
     ArtistModule.setValueToLocalStorage('Artists', JSON.stringify(artistArray));
-}
+} /*bruker splice for å modifisere arrayet, bruker indexOf for å finne indexen til artisten som skal endres,
+    fetchArtist for å definere artisten sin index å finne, 1 for å slette 1 element,
+    og getDataFromForm for å legge til det nye elementet, så settes ny verdi til lokalstorage*/
 
 updateBtn.addEventListener('click', () => {
     updateArtist(inputArtist);
